@@ -15,12 +15,12 @@
 
 include 'ULHPC/sysctl::params'
 
-$names = ["ensure", "protocol", "port", "packagename"]
+$names = ['ensure', 'protocol', 'port', 'packagename']
 
-notice("ULHPC/sysctl::params::ensure = ${ULHPC/sysctl::params::ensure}")
-notice("ULHPC/sysctl::params::protocol = ${ULHPC/sysctl::params::protocol}")
-notice("ULHPC/sysctl::params::port = ${ULHPC/sysctl::params::port}")
-notice("ULHPC/sysctl::params::packagename = ${ULHPC/sysctl::params::packagename}")
+notice("ULHPC/sysctl::params::ensure = ${ULHPC}/sysctl::params::ensure")
+notice("ULHPC/sysctl::params::protocol = ${ULHPC}/sysctl::params::protocol")
+notice("ULHPC/sysctl::params::port = ${ULHPC}/sysctl::params::port")
+notice("ULHPC/sysctl::params::packagename = ${ULHPC}/sysctl::params::packagename")
 
 #each($names) |$v| {
 #    $var = "ULHPC/sysctl::params::${v}"
