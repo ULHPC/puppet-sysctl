@@ -27,7 +27,7 @@ This module implements the following elements:
     - `sysctl::params` 
 
 * __Puppet definitions__: 
-    - `sysctl::value` 
+    - `sysctl::value: set a kernel parameter with sysctl
 
 All these components are configured through a set of variables you will find in
 [`manifests/params.pp`](manifests/params.pp). 
@@ -45,47 +45,35 @@ See [`metadata.json`](metadata.json). In particular, this module depends on
 
 ### Class `sysctl`
 
-This is the main class defined in this module.
-It accepts the following parameters: 
-
-* `$ensure`: default to 'present', can be 'absent'
-
 Use is as follows:
 
-     include ' sysctl'
-
-See also [`tests/init.pp`](tests/init.pp)
-
-### Class `sysctl::common`
-
-See [`tests/common.pp`](tests/common.pp)
-### Class `sysctl::common::debian`
-
-See [`tests/common/debian.pp`](tests/common/debian.pp)
-### Class `sysctl::common::redhat`
-
-See [`tests/common/redhat.pp`](tests/common/redhat.pp)
-### Class `sysctl::params`
-
-See [`tests/params.pp`](tests/params.pp)
+     include 'sysctl'
 
 ### Definition `sysctl::value`
 
-The definition `sysctl::value` provides ...
+The definition `sysctl::value` provides a way to define a kernel parameter with sysctl. 
 This definition accepts the following parameters:
 
-* `$ensure`: default to 'present', can be 'absent'
-* `$content`: specify the contents of the directive as a string
-* `$source`: copy a file as the content of the directive.
+* `$ensure`: default to 'present' (will create or update the value), can be 'absent' (will remove the parameter)
+* `value`: set the kernel parameter (in sysctl.conf and with sysctl)
 
-Example:
+Examples:
 
-        sysctl::value { 'toto':
+Set a tunable such that the kernel does not reboot automatically if a node panics:
+
+        sysctl::value { 'kernel.panic':
 		      ensure => 'present',
+		      value  => 0
         }
 
-See also [`tests/value.pp`](tests/value.pp)
+       
+Unset the tunable (reset to default):
 
+        sysctl::value { 'kernel.panic':
+		      ensure => 'absent'
+        }
+
+See also [`tests/init.pp`](tests/init.pp)
 
 ## Librarian-Puppet / R10K Setup
 
