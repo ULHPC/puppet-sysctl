@@ -16,5 +16,10 @@
 #      sudo puppet apply -t /vagrant/tests/init.pp
 #
 node default {
-    include ULHPC/sysctl
+    include 'sysctl'
+    sysctl::value { "kernel.panic":
+        value => '0',
+        ensure => present
+        #ensure => absent
+    }
 }

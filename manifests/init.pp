@@ -1,7 +1,7 @@
 # File::      <tt>sysctl.pp</tt>
-# Author::    Hyacinthe Cartiaux (hyacinthe.cartiaux@uni.lu)
-# Copyright:: Copyright (c) 2011 Hyacinthe Cartiaux
-# License::   GPLv2
+# Author::    UL HPC Management Team <hpc-sysadmins@uni.lu>
+# Copyright:: Copyright (c) 2015 UL HPC Management Team
+# License::   GPLv3
 #
 # ------------------------------------------------------------------------------
 # = Class: sysctl
