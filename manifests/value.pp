@@ -36,6 +36,7 @@ define sysctl::value(
 {
 
   include sysctl::params
+  include sysctl::common
 
   $parameter = $name
 
