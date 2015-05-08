@@ -1,3 +1,7 @@
+# File::      <tt>common.pp</tt>
+# Author::    UL HPC Management Team <hpc-sysadmins@uni.lu>
+# Copyright:: Copyright (c) 2015 UL HPC Management Team
+# License::   GPLv3
 # ------------------------------------------------------------------------------
 # = Class: sysctl::common
 #

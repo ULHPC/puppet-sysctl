@@ -1,4 +1,4 @@
-# File::      <tt>sysctl-params.pp</tt>
+# File::      <tt>params.pp</tt>
 # Author::    UL HPC Management Team <hpc-sysadmins@uni.lu>
 # Copyright:: Copyright (c) 2015 UL HPC Management Team
 # License::   GPL v3

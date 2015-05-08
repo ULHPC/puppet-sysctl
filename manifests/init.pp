@@ -1,4 +1,4 @@
-# File::      <tt>sysctl.pp</tt>
+# File::      <tt>init.pp</tt>
 # Author::    UL HPC Management Team <hpc-sysadmins@uni.lu>
 # Copyright:: Copyright (c) 2015 UL HPC Management Team
 # License::   GPLv3
@@ -22,7 +22,7 @@
 #
 # == Sample Usage:
 #
-#     import sysctl
+#     include sysctl
 #
 # You can then specialize the various aspects of the configuration,
 # for instance:
