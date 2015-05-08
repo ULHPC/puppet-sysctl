@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/sysctl",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "UL HPC Management Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage sysctl",
@@ -31,9 +31,9 @@
   "classes": [
     "sysctl",
     "sysctl::common",
-    "sysctl::debian",
-    "sysctl::params",
-    "sysctl::redhat"
+    "sysctl::common::debian",
+    "sysctl::common::redhat",
+    "sysctl::params"
   ],
   "definitions": [
     "sysctl::value"

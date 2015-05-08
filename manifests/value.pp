@@ -1,11 +1,11 @@
-# File::      <tt>sysctl-set_value.pp</tt>
+# File::      <tt>value.pp</tt>
 # Author::    UL HPC Management Team <hpc-sysadmins@uni.lu>
 # Copyright:: Copyright (c) 2015 UL HPC Management Team
 # License::   GPLv3
 # ------------------------------------------------------------------------------
-# = Define: sysctl::set_value
+# = Define: sysctl::value
 #
-# Defines kernel parameter with sysctl. You are intended to use as name the
+# Defines kernel parameter with sysctl. You should use as name the actual
 # name of the parameter.
 #
 # == Parameter:
@@ -36,6 +36,7 @@ define sysctl::value(
 {
 
   include sysctl::params
+  include sysctl::common
 
   $parameter = $name
 
