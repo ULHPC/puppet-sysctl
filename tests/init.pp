@@ -17,9 +17,10 @@
 #
 node default {
     include 'sysctl'
-    sysctl::value { "kernel.panic":
-        value => '0',
-        ensure => present
-        #ensure => absent
-    }
+    
+    # Set kernel.panic to 0 (default) for testing
+    sysctl::value { 'kernel.panic':
+        ensure => present,
+        value  => '0'
+  }
 }
