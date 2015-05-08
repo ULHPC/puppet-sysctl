@@ -1,6 +1,6 @@
--*- mode: markdown; mode: auto-fill; fill-column: 80 -*-
+-*- mode: markdown; mode: visual-line;  -*-
 
-# Ulhpc/sysctl Puppet Module 
+# Sysctl Puppet Module 
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/sysctl.svg)](https://forge.puppetlabs.com/ULHPC/sysctl)
 [![License](http://img.shields.io/:license-gpl3.0-blue.svg)](LICENSE)
@@ -15,15 +15,25 @@ Configure and manage sysctl
 
 ## Synopsis
 
-Configure and manage sysctl
+Configure and manage sysctl.
+
 This module implements the following elements: 
 
-* __classes__:     `ULHPC/sysctl`
-* __definitions__: 
-  * `ULHPC/sysctl::mydef`: 
- 
-The various operations of this repository are piloted from a `Rakefile` which
-assumes that you have [RVM](https://rvm.io/) installed on your system.
+* __Puppet classes__:
+    - `sysctl` 
+    - `sysctl::common` 
+    - `sysctl::debian` 
+    - `sysctl::params` 
+    - `sysctl::redhat` 
+
+* __Puppet definitions__: 
+    - `sysctl::value` 
+
+All these components are configured through a set of variables you will find in
+[`manifests/params.pp`](manifests/params.pp). 
+
+_Note_: the various operations that can be conducted from this repository are piloted from a [`Rakefile`](https://github.com/ruby/rake) and assumes you have a running [Ruby](https://www.ruby-lang.org/en/) installation.
+See [`doc/contributing.md`](doc/contributing.md) for more details on the steps you shall follow to have this `Rakefile` working properly. 
 
 ## Dependencies
 
@@ -31,19 +41,40 @@ See [`metadata.json`](metadata.json). In particular, this module depends on
 
 * [puppetlabs/stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
 
-## General Parameters
-
-See [manifests/params.pp](manifests/params.pp)
-
 ## Overview and Usage
 
-### class `ULHPC/sysctl`
+### Class `sysctl`
 
-     include ' ULHPC/sysctl'
+This is the main class defined in this module.
+It accepts the following parameters: 
 
-### definition `ULHPC/sysctl::mydef`
+* `$ensure`: default to 'present', can be 'absent'
 
-The definition `ULHPC/sysctl::mydef` provides ...
+Use is as follows:
+
+     include ' sysctl'
+
+See also [`tests/init.pp`](tests/init.pp)
+
+### Class `sysctl`
+
+See `tests/sysctl.pp`
+### Class `sysctl::common`
+
+See `tests/sysctl/common.pp`
+### Class `sysctl::debian`
+
+See `tests/sysctl/debian.pp`
+### Class `sysctl::params`
+
+See `tests/sysctl/params.pp`
+### Class `sysctl::redhat`
+
+See `tests/sysctl/redhat.pp`
+
+### Definition `sysctl::value`
+
+The definition `sysctl::value` provides ...
 This definition accepts the following parameters:
 
 * `$ensure`: default to 'present', can be 'absent'
@@ -52,14 +83,16 @@ This definition accepts the following parameters:
 
 Example:
 
-      ULHPC/sysctl::mydef {'entry':
-           content => "entry\n",
-      }
+        sysctl::value { 'toto':
+		      ensure => 'present',
+        }
+
+See also `tests/sysctl/value.pp`
+
 
 ## Librarian-Puppet / R10K Setup
 
-You can of course configure ULHPC-sudo in your `Puppetfile` to make it 
-available with [Librarian puppet](http://librarian-puppet.com/) or
+You can of course configure the sysctl module in your `Puppetfile` to make it available with [Librarian puppet](http://librarian-puppet.com/) or
 [r10k](https://github.com/adrienthebo/r10k) by adding the following entry:
 
      # Modules from the Puppet Forge
@@ -73,60 +106,20 @@ or, if you prefer to work on the git version:
 
 ## Issues / Feature request
 
-You can submit bug / issues / feature request using the 
-[ULHPC/sysctl Puppet Module Tracker](https://github.com/ULHPC/sysctl/issues). 
-
+You can submit bug / issues / feature request using the [ULHPC/sysctl Puppet Module Tracker](https://github.com/ULHPC/sysctl/issues). 
 
 ## Developments / Contributing to the code 
 
-If you want to contribute to the code, you shall be aware of the way this module
-is organized.
+If you want to contribute to the code, you shall be aware of the way this module is organized. 
 These elements are detailed on [`doc/contributing.md`](doc/contributing.md)
 
-You are more than welcome to contribute to its development by 
-[sending a pull request](https://help.github.com/articles/using-pull-requests). 
+You are more than welcome to contribute to its development by [sending a pull request](https://help.github.com/articles/using-pull-requests). 
 
-## Tests on Vagrant box
+## Puppet modules tests within a Vagrant box
 
-The best way to test this module in a non-intrusive way is to rely on
-[Vagrant](http://www.vagrantup.com/). The `Vagrantfile` at the root of the
-repository pilot the provisioning of the vagrant box and relies on boxes
-generated through my [vagrant-vms](https://github.com/falkor/vagrant-vms)
-repository.  
-Once cloned, run 
+The best way to test this module in a non-intrusive way is to rely on [Vagrant](http://www.vagrantup.com/).
+The `Vagrantfile` at the root of the repository pilot the provisioning various vagrant boxes available on [Vagrant cloud](https://atlas.hashicorp.com/boxes/search?utf8=%E2%9C%93&sort=&provider=virtualbox&q=svarrette) you can use to test this module.
 
-      $> rake packer:Debian:init
-      
-To create a template. Select the version matching the once mentioned on the
-`Vagrantfile` (`7.6.0-amd64` for instance)
-Then run 
+See [`doc/vagrant.md`](doc/vagrant.md) for more details. 
 
-      $> rake packer:Debian:build
-      
-This shall generate the vagrant box `debian-7.6.0-amd64.box` that you can then
-add to your box lists: 
-
-      $> vagrant box add debian-7.6.0-amd64  packer/debian-7.6.0-amd64/debian-7.6.0-amd64.box
-
-Now you can run `vagrant up` from this repository to boot the VM, provision it
-to be ready to test this module (see the [`.vagrant_init.rb`](.vagrant_init.rb)
-script). For instance, you can test the manifests of the `tests/` directory
-within the VM: 
-
-      $> vagrant ssh 
-      [...]
-      (vagrant)$> sudo puppet apply -t /vagrant/tests/init.pp
-      
-Run `vagrant halt` (or `vagrant destroy`) to stop (or kill) the VM once you've
-finished to play with it. 
-
-## Resources
-
-### Git 
-
-You should become familiar (if not yet) with Git. Consider these resources: 
-
-* [Git book](http://book.git-scm.com/index.html)
-* [Github:help](http://help.github.com/mac-set-up-git/)
-* [Git reference](http://gitref.org/)
 
