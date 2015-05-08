@@ -1,0 +1,29 @@
+{
+  "name": "ULHPC/sysctl",
+  "version": "0.1.0",
+  "author": "UL HPC Management Team",
+  "mail": "hpc-sysadmins@uni.lu",
+  "summary": "Configure and manage sysctl",
+  "description": "Configure and manage sysctl",
+  "license": "gpl-3.0",
+  "source": "https://github.com/ULHPC/sysctl",
+  "project_page": "https://github.com/ULHPC/sysctl",
+  "issues_url": "https://github.com/ULHPC/sysctl/issues",
+  "forge_url": "https://forge.puppetlabs.com/ULHPC/sysctl",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_range": ">= 1.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "tags": ["sysctl"]
+}
