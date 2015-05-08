@@ -15,10 +15,10 @@ If you want to contribute to the code, you shall be aware of the way this module
                 `-- init.pp      # Main manifests file which defines the sysctl class 
                 `-- params.pp    # ULHPC/sysctl module variables 
                 `-- sysctl.pp 
-                `-- sysctl/common.pp 
-                `-- sysctl/debian.pp 
-                `-- sysctl/redhat.pp 
-                `-- sysctl/value.pp 
+                `-- common.pp 
+                `-- common/debian.pp 
+                `-- common/redhat.pp 
+                `-- value.pp 
            `-- templates/        # Module ERB template files
            `-- tests/            # Contains examples showing how to declare the module’s classes and defined type
            `-- spec/             # Contains rspec tests 
