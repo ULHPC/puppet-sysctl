@@ -31,9 +31,9 @@
   "classes": [
     "sysctl",
     "sysctl::common",
-    "sysctl::debian",
-    "sysctl::params",
-    "sysctl::redhat"
+    "sysctl::common::debian",
+    "sysctl::common::redhat",
+    "sysctl::params"
   ],
   "definitions": [
     "sysctl::value"
