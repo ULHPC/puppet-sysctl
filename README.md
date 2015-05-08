@@ -22,9 +22,9 @@ This module implements the following elements:
 * __Puppet classes__:
     - `sysctl` 
     - `sysctl::common` 
-    - `sysctl::debian` 
+    - `sysctl::common::debian` 
+    - `sysctl::common::redhat` 
     - `sysctl::params` 
-    - `sysctl::redhat` 
 
 * __Puppet definitions__: 
     - `sysctl::value` 
@@ -56,21 +56,18 @@ Use is as follows:
 
 See also [`tests/init.pp`](tests/init.pp)
 
-### Class `sysctl`
-
-See `tests/sysctl.pp`
 ### Class `sysctl::common`
 
-See `tests/sysctl/common.pp`
-### Class `sysctl::debian`
+See [`tests/common.pp`](tests/common.pp)
+### Class `sysctl::common::debian`
 
-See `tests/sysctl/debian.pp`
+See [`tests/common/debian.pp`](tests/common/debian.pp)
+### Class `sysctl::common::redhat`
+
+See [`tests/common/redhat.pp`](tests/common/redhat.pp)
 ### Class `sysctl::params`
 
-See `tests/sysctl/params.pp`
-### Class `sysctl::redhat`
-
-See `tests/sysctl/redhat.pp`
+See [`tests/params.pp`](tests/params.pp)
 
 ### Definition `sysctl::value`
 
@@ -87,7 +84,7 @@ Example:
 		      ensure => 'present',
         }
 
-See also `tests/sysctl/value.pp`
+See also [`tests/value.pp`](tests/value.pp)
 
 
 ## Librarian-Puppet / R10K Setup
