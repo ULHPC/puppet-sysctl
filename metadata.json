@@ -6,7 +6,7 @@
   "summary": "Configure and manage sysctl",
   "description": "Configure and manage sysctl",
   "license": "GPL-3.0",
-  "source": "https://github.com/ULHPC/sysctl",
+  "source": "https://github.com/ULHPC/puppet-sysctl",
   "docs_project": "ulhpc-puppet-sysctl",
   "project_page": "https://github.com/ULHPC/puppet-sysctl",
   "issues_url": "https://github.com/ULHPC/puppet-sysctl/issues",
