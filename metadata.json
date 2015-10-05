@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/sysctl",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "author": "S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage sysctl",
