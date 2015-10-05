@@ -52,7 +52,7 @@ define sysctl::value(
           path    => '/usr/bin:/usr/sbin:/bin',
           unless  => "grep '^${parameter}[[:blank:]]*=.*$' ${sysctl::params::configfile}",
           require => Exec['create_sysctl_origfile'],
-          notify  => ["exec_sysctl_${parameter}"]
+          notify  => Exec["exec_sysctl_${parameter}"]
       }
 
       # Change value of the parameter if already existing
@@ -60,7 +60,7 @@ define sysctl::value(
           path    => '/usr/bin:/usr/sbin:/bin',
           unless  => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}",
           require => Exec['create_sysctl_origfile'],
-          notify  => ["exec_sysctl_${parameter}"]
+          notify  => Exec["exec_sysctl_${parameter}"]
       }
   }
   else
