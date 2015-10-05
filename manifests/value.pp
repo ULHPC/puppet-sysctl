@@ -43,21 +43,24 @@ define sysctl::value(
   if ($ensure == 'present')
   {
       exec { "exec_sysctl_${parameter}":
-          command => "${sysctl::params::cmdname} ${name}=${value}",
+          command     => "${sysctl::params::cmdname} ${name}=${value}",
+          refreshonly => true
       }
 
       # First insert of the parameter
       exec { "echo ${parameter}=${value} >> ${sysctl::params::configfile}":
           path    => '/usr/bin:/usr/sbin:/bin',
           unless  => "grep '^${parameter}[[:blank:]]*=.*$' ${sysctl::params::configfile}",
-          require => Exec['create_sysctl_origfile']
+          require => Exec['create_sysctl_origfile'],
+          notify  => ["exec_sysctl_${parameter}"]
       }
 
       # Change value of the parameter if already existing
       exec { "sed -s -i 's/^${parameter}[[:blank:]]*=.*$/${parameter}=${value}/' ${sysctl::params::configfile}":
           path    => '/usr/bin:/usr/sbin:/bin',
           unless  => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}",
-          require => Exec['create_sysctl_origfile']
+          require => Exec['create_sysctl_origfile'],
+          notify  => ["exec_sysctl_${parameter}"]
       }
   }
   else
