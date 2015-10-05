@@ -1,6 +1,6 @@
 {
   "name": "ULHPC/sysctl",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team",
   "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage sysctl",
@@ -21,6 +21,15 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Centos",
+      "operatingsystemrelease": [
+        "5",
         "6",
         "7"
       ]

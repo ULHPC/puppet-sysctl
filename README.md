@@ -4,7 +4,7 @@
 
 [![Puppet Forge](http://img.shields.io/puppetforge/v/ULHPC/sysctl.svg)](https://forge.puppetlabs.com/ULHPC/sysctl)
 [![License](http://img.shields.io/:license-GPL3.0-blue.svg)](LICENSE)
-![Supported Platforms](http://img.shields.io/badge/platform-debian-lightgrey.svg)
+![Supported Platforms](http://img.shields.io/badge/platform-debian|centos-lightgrey.svg)
 [![Documentation Status](https://readthedocs.org/projects/ulhpc-puppet-sysctl/badge/?version=latest)](https://readthedocs.org/projects/ulhpc-puppet-sysctl/?badge=latest)
 
 Configure and manage sysctl
@@ -12,7 +12,7 @@ Configure and manage sysctl
       Copyright (c) 2015 S. Varrette, H. Cartiaux, V. Plugaru, S. Diehl aka. UL HPC Management Team <hpc-sysadmins@uni.lu>
       
 
-| [Project Page](https://github.com/ULHPC/puppet-sysctl) | [Sources](https://github.com/ULHPC/sysctl) | [Documentation](https://ulhpc-puppet-sysctl.readthedocs.org/en/latest/) | [Issues](https://github.com/ULHPC/puppet-sysctl/issues) |
+| [Project Page](https://github.com/ULHPC/puppet-sysctl) | [Sources](https://github.com/ULHPC/puppet-sysctl) | [Documentation](https://ulhpc-puppet-sysctl.readthedocs.org/en/latest/) | [Issues](https://github.com/ULHPC/puppet-sysctl/issues) |
 
 ## Synopsis
 
@@ -34,7 +34,7 @@ All these components are configured through a set of variables you will find in
 [`manifests/params.pp`](manifests/params.pp). 
 
 _Note_: the various operations that can be conducted from this repository are piloted from a [`Rakefile`](https://github.com/ruby/rake) and assumes you have a running [Ruby](https://www.ruby-lang.org/en/) installation.
-See [`doc/contributing.md`](doc/contributing.md) for more details on the steps you shall follow to have this `Rakefile` working properly. 
+See `docs/contributing.md` for more details on the steps you shall follow to have this `Rakefile` working properly. 
 
 ## Dependencies
 
@@ -94,7 +94,7 @@ You can of course configure the sysctl module in your `Puppetfile` to make it av
 or, if you prefer to work on the git version: 
 
      mod "ULHPC/sysctl", 
-         :git => 'https://github.com/ULHPC/sysctl',
+         :git => 'https://github.com/ULHPC/puppet-sysctl',
          :ref => 'production' 
 
 ## Issues / Feature request
@@ -115,6 +115,11 @@ The `Vagrantfile` at the root of the repository pilot the provisioning various v
 
 See [`docs/vagrant.md`](vagrant.md) for more details. 
 
+## Online Documentation
+
+[Read the Docs](https://readthedocs.org/) aka RTFD hosts documentation for the open source community and the [ULHPC/sysctl](https://github.com/ULHPC/puppet-sysctl) puppet module has its documentation (see the `docs/` directly) hosted on [readthedocs](http://ulhpc-puppet-sysctl.rtfd.org).
+
+See [`docs/rtfd.md`](rtfd.md) for more details.
 
 ## Licence
 
