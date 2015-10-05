@@ -64,8 +64,8 @@ define sysctl::value(
   {
       # Delete the parameter
       exec { "sed -s -i '/^${parameter}[[:blank:]]*=.*$/d' ${sysctl::params::configfile}":
-          path    => '/usr/bin:/usr/sbin:/bin',
-          onlyif  => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}"
+          path   => '/usr/bin:/usr/sbin:/bin',
+          onlyif => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}"
       }
   }
 
