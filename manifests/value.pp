@@ -35,42 +35,28 @@ define sysctl::value(
 )
 {
 
-  include sysctl::params
-  include sysctl::common
+    include sysctl::params
+    include sysctl::common
 
-  $parameter = $name
+    $parameter = $name
 
-  if ($ensure == 'present')
-  {
-      exec { "exec_sysctl_${parameter}":
-          command     => "${sysctl::params::cmdname} ${name}=${value}",
-          refreshonly => true
-      }
+    if ($ensure == 'present') {
+        exec { "exec_sysctl_${parameter}":
+            command     => "${sysctl::params::cmdname} ${name}=${value}",
+            subscribe   => File["${parameter}.conf"],
+            refreshonly => true
+        }
+    }
 
-      # First insert of the parameter
-      exec { "echo ${parameter}=${value} >> ${sysctl::params::configfile}":
-          path    => '/usr/bin:/usr/sbin:/bin',
-          unless  => "grep '^${parameter}[[:blank:]]*=.*$' ${sysctl::params::configfile}",
-          require => Exec['create_sysctl_origfile'],
-          notify  => Exec["exec_sysctl_${parameter}"]
-      }
-
-      # Change value of the parameter if already existing
-      exec { "sed -s -i 's/^${parameter}[[:blank:]]*=.*$/${parameter}=${value}/' ${sysctl::params::configfile}":
-          path    => '/usr/bin:/usr/sbin:/bin',
-          unless  => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}",
-          require => Exec['create_sysctl_origfile'],
-          notify  => Exec["exec_sysctl_${parameter}"]
-      }
-  }
-  else
-  {
-      # Delete the parameter
-      exec { "sed -s -i '/^${parameter}[[:blank:]]*=.*$/d' ${sysctl::params::configfile}":
-          path   => '/usr/bin:/usr/sbin:/bin',
-          onlyif => "grep '^${parameter}[[:blank:]]*=${value}$' ${sysctl::params::configfile}"
-      }
-  }
+    file { "${parameter}.conf":
+        ensure  => $ensure,
+        path    => "${sysctl::params::configdir}/${parameter}.conf",
+        owner   => $sysctl::params::configfile_owner,
+        group   => $sysctl::params::configfile_group,
+        mode    => $sysctl::params::configfile_mode,
+        content => "${sysctl::params::configdir}/${parameter}=${value}",
+        require => File[$sysctl::params::configdir]
+    }
 
 }
 
