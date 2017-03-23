@@ -37,18 +37,25 @@ class sysctl::params {
         default => '/sbin/sysctl',
     }
 
-    $configfile = $::operatingsystem ? {
-        default => '/etc/sysctl.conf',
+    $configdir = $::operatingsystem ? {
+        default => '/etc/sysctl.d',
+    }
+    $configdir_mode = $::operatingsystem ? {
+        default => '0755',
+    }
+    $configdir_owner = $::operatingsystem ? {
+        default => 'root',
+    }
+    $configdir_group = $::operatingsystem ? {
+        default => 'root',
     }
 
     $configfile_mode = $::operatingsystem ? {
         default => '0644',
     }
-
     $configfile_owner = $::operatingsystem ? {
         default => 'root',
     }
-
     $configfile_group = $::operatingsystem ? {
         default => 'root',
     }
