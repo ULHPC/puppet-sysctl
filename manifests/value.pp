@@ -54,7 +54,7 @@ define sysctl::value(
         owner   => $sysctl::params::configfile_owner,
         group   => $sysctl::params::configfile_group,
         mode    => $sysctl::params::configfile_mode,
-        content => "${sysctl::params::configdir}/${parameter}=${value}",
+        content => "${parameter}=${value}",
         require => File[$sysctl::params::configdir]
     }
 
