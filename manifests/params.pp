@@ -24,10 +24,7 @@
 #
 class sysctl::params {
 
-    $ensure = $::sysctl_ensure ? {
-        ''      => 'present',
-        default => $::sysctl_ensure
-    }
+    $ensure = 'present'
 
     #### MODULE INTERNAL VARIABLES  #########
     # (Modify to adapt to unsupported OSes)
@@ -60,4 +57,3 @@ class sysctl::params {
         default => 'root',
     }
 }
-
