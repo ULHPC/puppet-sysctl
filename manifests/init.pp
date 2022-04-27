@@ -48,10 +48,10 @@ class sysctl( $ensure = $sysctl::params::ensure ) inherits sysctl::params
     }
 
     case $::operatingsystem {
-        debian, ubuntu:         { include sysctl::common::debian }
-        redhat, fedora, centos: { include sysctl::common::redhat }
+        debian, ubuntu:                { include sysctl::common::debian }
+        redhat, fedora, centos, rocky: { include sysctl::common::redhat }
         default: {
-            fail("Module $::{module_name} is not supported on $::{operatingsystem}")
+            fail("Module ${::module_name} is not supported on ${::operatingsystem}")
         }
     }
 }
