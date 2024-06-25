@@ -44,7 +44,7 @@ define sysctl::value(
         exec { "exec_sysctl_${parameter}":
             command     => "${sysctl::params::cmdname} ${name}=${value}",
             subscribe   => File["${parameter}.conf"],
-            refreshonly => true
+            refreshonly => true,
         }
     }
 
@@ -55,7 +55,7 @@ define sysctl::value(
         group   => $sysctl::params::configfile_group,
         mode    => $sysctl::params::configfile_mode,
         content => "${parameter}=${value}",
-        require => File[$sysctl::params::configdir]
+        require => File[$sysctl::params::configdir],
     }
 
 }

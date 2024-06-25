@@ -21,6 +21,6 @@ node default {
     # Set kernel.panic to 0 (default) for testing
     sysctl::value { 'net.ipv4.tcp_sack':
         ensure => present,
-        value  => '0'
+        value  => '0',
     }
 }
