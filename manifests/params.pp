@@ -30,30 +30,30 @@ class sysctl::params {
     # (Modify to adapt to unsupported OSes)
     #######################################
 
-    $cmdname = $::operatingsystem ? {
+    $cmdname = $facts['os']['name'] ? {
         default => '/sbin/sysctl',
     }
 
-    $configdir = $::operatingsystem ? {
+    $configdir = $facts['os']['name'] ? {
         default => '/etc/sysctl.d',
     }
-    $configdir_mode = $::operatingsystem ? {
+    $configdir_mode = $facts['os']['name'] ? {
         default => '0755',
     }
-    $configdir_owner = $::operatingsystem ? {
+    $configdir_owner = $facts['os']['name'] ? {
         default => 'root',
     }
-    $configdir_group = $::operatingsystem ? {
+    $configdir_group = $facts['os']['name'] ? {
         default => 'root',
     }
 
-    $configfile_mode = $::operatingsystem ? {
+    $configfile_mode = $facts['os']['name'] ? {
         default => '0644',
     }
-    $configfile_owner = $::operatingsystem ? {
+    $configfile_owner = $facts['os']['name'] ? {
         default => 'root',
     }
-    $configfile_group = $::operatingsystem ? {
+    $configfile_group = $facts['os']['name'] ? {
         default => 'root',
     }
 }

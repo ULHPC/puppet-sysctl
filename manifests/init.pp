@@ -47,11 +47,11 @@ class sysctl( $ensure = $sysctl::params::ensure ) inherits sysctl::params
         fail("sysctl 'ensure' parameter must be set to either 'absent' or 'present'")
     }
 
-    case $::operatingsystem {
-        debian, ubuntu:                { include sysctl::common::debian }
-        redhat, fedora, centos, rocky: { include sysctl::common::redhat }
+    case $facts['os']['name'] {
+        'debian', 'ubuntu':                { include sysctl::common::debian }
+        'redhat', 'fedora', 'centos', 'rocky': { include sysctl::common::redhat }
         default: {
-            fail("Module ${::module_name} is not supported on ${::operatingsystem}")
+            fail("Module ${facts['module_name']} is not supported on ${facts['os']['name']}")
         }
     }
 }
