@@ -51,7 +51,7 @@ class sysctl( $ensure = $sysctl::params::ensure ) inherits sysctl::params
         'debian', 'ubuntu':                { include sysctl::common::debian }
         'redhat', 'fedora', 'centos', 'rocky': { include sysctl::common::redhat }
         default: {
-            fail("Module ${facts['module_name']} is not supported on ${facts['os']['name']}")
+            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
         }
     }
 }
