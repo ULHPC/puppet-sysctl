@@ -23,37 +23,36 @@
 # [Remember: No empty lines between comments and class definition]
 #
 class sysctl::params {
+  $ensure = 'present'
 
-    $ensure = 'present'
+  #### MODULE INTERNAL VARIABLES  #########
+  # (Modify to adapt to unsupported OSes)
+  #######################################
 
-    #### MODULE INTERNAL VARIABLES  #########
-    # (Modify to adapt to unsupported OSes)
-    #######################################
+  $cmdname = $facts['os']['name'] ? {
+    default => '/sbin/sysctl',
+  }
 
-    $cmdname = $facts['os']['name'] ? {
-        default => '/sbin/sysctl',
-    }
+  $configdir = $facts['os']['name'] ? {
+    default => '/etc/sysctl.d',
+  }
+  $configdir_mode = $facts['os']['name'] ? {
+    default => '0755',
+  }
+  $configdir_owner = $facts['os']['name'] ? {
+    default => 'root',
+  }
+  $configdir_group = $facts['os']['name'] ? {
+    default => 'root',
+  }
 
-    $configdir = $facts['os']['name'] ? {
-        default => '/etc/sysctl.d',
-    }
-    $configdir_mode = $facts['os']['name'] ? {
-        default => '0755',
-    }
-    $configdir_owner = $facts['os']['name'] ? {
-        default => 'root',
-    }
-    $configdir_group = $facts['os']['name'] ? {
-        default => 'root',
-    }
-
-    $configfile_mode = $facts['os']['name'] ? {
-        default => '0644',
-    }
-    $configfile_owner = $facts['os']['name'] ? {
-        default => 'root',
-    }
-    $configfile_group = $facts['os']['name'] ? {
-        default => 'root',
-    }
+  $configfile_mode = $facts['os']['name'] ? {
+    default => '0644',
+  }
+  $configfile_owner = $facts['os']['name'] ? {
+    default => 'root',
+  }
+  $configfile_group = $facts['os']['name'] ? {
+    default => 'root',
+  }
 }

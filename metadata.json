@@ -2,37 +2,54 @@
   "name": "ULHPC-sysctl",
   "version": "0.3.2",
   "author": "UL HPC Team",
-  "mail": "hpc-sysadmins@uni.lu",
   "summary": "Configure and manage sysctl",
-  "description": "Configure and manage sysctl",
   "license": "GPL-3.0",
   "source": "https://github.com/ULHPC/puppet-sysctl",
-  "docs_project": "ulhpc-puppet-sysctl",
   "project_page": "https://github.com/ULHPC/puppet-sysctl",
   "issues_url": "https://github.com/ULHPC/puppet-sysctl/issues",
-  "forge_url": "https://forge.puppetlabs.com/ULHPC/sysctl",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">=4.2.2 <5.0.0"
+      "version_requirement": ">=4.2.2 <10.0.0"
     }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "6",
-        "7",
-        "8"
+        "11",
+        "12",
+        "13"
       ]
     },
     {
-      "operatingsystem": "Centos",
+      "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5",
-        "6",
+        "7",
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8",
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
         "7"
       ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 8.0.0 < 9.0.0"
     }
   ],
   "tags": [
@@ -40,15 +57,5 @@
     "kernel",
     "parameters",
     "os"
-  ],
-  "classes": [
-    "sysctl",
-    "sysctl::common",
-    "sysctl::common::debian",
-    "sysctl::common::redhat",
-    "sysctl::params"
-  ],
-  "definitions": [
-    "sysctl::value"
   ]
 }
