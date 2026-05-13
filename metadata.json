@@ -1,6 +1,6 @@
 {
   "name": "ULHPC-sysctl",
-  "version": "0.3.2",
+  "version": "1.0.0",
   "author": "UL HPC Team",
   "summary": "Configure and manage sysctl",
   "license": "GPL-3.0",
