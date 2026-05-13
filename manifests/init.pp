@@ -39,19 +39,18 @@
 #
 # [Remember: No empty lines between comments and class definition]
 #
-class sysctl( $ensure = $sysctl::params::ensure ) inherits sysctl::params
-{
-    info ("Configuring sysctl (with ensure = ${ensure})")
+class sysctl ( $ensure = $sysctl::params::ensure ) inherits sysctl::params {
+  info ("Configuring sysctl (with ensure = ${ensure})")
 
-    if ! ($ensure in [ 'present', 'absent' ]) {
-        fail("sysctl 'ensure' parameter must be set to either 'absent' or 'present'")
-    }
+  if ! ($ensure in ['present', 'absent']) {
+    fail("sysctl 'ensure' parameter must be set to either 'absent' or 'present'")
+  }
 
-    case $facts['os']['name'] {
-        'debian', 'ubuntu':                { include sysctl::common::debian }
-        'redhat', 'fedora', 'centos', 'rocky': { include sysctl::common::redhat }
-        default: {
-            fail("Module ${module_name} is not supported on ${facts['os']['name']}")
-        }
+  case $facts['os']['name'] {
+    'debian', 'ubuntu':                { include sysctl::common::debian }
+    'redhat', 'fedora', 'centos', 'rocky': { include sysctl::common::redhat }
+    default: {
+      fail("Module ${module_name} is not supported on ${facts['os']['name']}")
     }
+  }
 }
